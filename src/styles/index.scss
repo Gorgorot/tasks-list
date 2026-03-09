@@ -1,0 +1,13 @@
+@use "theme.light";
+
+@use '~bootstrap/scss/bootstrap';
+
+#root {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.icon-button {
+  cursor: pointer;
+}
