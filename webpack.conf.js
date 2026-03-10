@@ -30,7 +30,10 @@ module.exports = {
                     {
                         loader: 'sass-loader',
                         options: {
-                            sourceMap: isDevelopment
+                            sourceMap: isDevelopment,
+                            sassOptions: {
+                                quietDeps: true
+                            }
                         }
                     }
                 ]

@@ -1,27 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { TasksStates } from "../../model/tasks";
+import { makeTask } from "../../model/tasks";
 
 export const tasksSlice = createSlice({
     name: "tasks",
     initialState: {
         items: [
-            {
-                id: 1,
-                name: "Task 1",
-                description: "Task 1",
-                state: TasksStates.CREATED,
-            },
-            {
-                id: 2,
-                name: "Task 2",
-                description: "Task 2",
-                state: TasksStates.IN_WORK,
-            }
+            makeTask('task', 'task'),
+            makeTask('task', 'task'),
         ],
     },
     reducers: {
         addTask: (state, action) => {
+            const newTask = makeTask(action.payload.name, action.payload.description);
 
+            state.items.push(newTask);
         },
         removeTask: (state, action) => {
 

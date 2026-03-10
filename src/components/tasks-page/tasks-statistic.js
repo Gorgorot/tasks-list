@@ -1,7 +1,6 @@
 import React from "react";
 import { Badge } from "react-bootstrap";
 import { useSelector } from "react-redux";
-import { TasksNamesMap, TasksStates } from "../../model/tasks";
 import { createdTasksSelector, inWorkTasksSelector, readyTasksSelector } from "../../stores/tasks/tasks-selectors";
 
 export function TasksStatistic() {
@@ -11,9 +10,9 @@ export function TasksStatistic() {
 
     return (
         <div className="d-flex gap-2">
-            <Badge bg="dark">Готово { readyTasks.length }</Badge>
+            <Badge bg="success">Готово к работе { createdTasks.length }</Badge>
             <Badge bg="warning">В работе { inWorkTasks.length }</Badge>
-            <Badge bg="success">Создано { createdTasks.length }</Badge>
+            <Badge bg="dark">Выполнено { readyTasks.length }</Badge>
         </div>
     );
 }

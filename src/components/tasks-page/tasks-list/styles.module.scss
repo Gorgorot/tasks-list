@@ -1,0 +1,25 @@
+@use "bootstrap/scss/functions" as *;
+
+.tasks-list-item__date {
+  position: absolute;
+  font-size: 0.75rem;
+  color: #7b7b7b;
+  right: 6px;
+  bottom: 2px;
+}
+
+.tasks-list-column {
+  height: 100%;
+  border-radius: 5px;
+
+  &__header {
+    background: var(--background-gray);
+    border-radius: 5px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+}

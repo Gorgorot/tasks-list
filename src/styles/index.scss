@@ -1,6 +1,7 @@
-@use "theme.light";
-
 @use '~bootstrap/scss/bootstrap';
+@use "theme-light";
+@use "theme-dark";
+
 
 #root {
   display: flex;
