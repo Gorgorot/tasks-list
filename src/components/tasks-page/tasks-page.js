@@ -2,13 +2,17 @@ import React from "react";
 import { TasksPageNavbar } from "./tasks-page-navbar";
 import { TasksControlPanel } from "./tasks-control-panel";
 import { TasksList } from "./tasks-list";
+import { Provider } from "react-redux";
+import { tasksStore } from "../../stores/tasks/tasks-store";
 
 export function TasksPage(props) {
     return (
         <React.Fragment>
-            <TasksPageNavbar/>
-            <TasksControlPanel/>
-            <TasksList/>
+            <Provider store={ tasksStore }>
+                <TasksPageNavbar/>
+                <TasksControlPanel/>
+                <TasksList/>
+            </Provider>
         </React.Fragment>
     );
 }
