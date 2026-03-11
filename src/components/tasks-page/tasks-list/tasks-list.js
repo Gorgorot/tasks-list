@@ -1,30 +1,43 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Container } from "react-bootstrap";
 import { useSelector } from "react-redux";
-import { createdTasksSelector, inWorkTasksSelector, readyTasksSelector } from "../../../stores/tasks/tasks-selectors";
 import { TasksListColumn } from "./tasks-list-column";
-import { TasksStates } from "../../../model/tasks";
 import * as styles from './styles.module.scss';
+import { sortedStates } from "../../../stores/states/states-slice";
 
 
 export function TasksList() {
-    const createdTasks = useSelector(createdTasksSelector);
-    const inWorkTasks = useSelector(inWorkTasksSelector);
-    const readyTasks = useSelector(readyTasksSelector);
+    const states = useSelector(sortedStates);
+    const tasks = useSelector(state => state.tasks.items);
+    const [lists, setLists] = React.useState(makeLists(states, tasks));
+
+    useEffect(() => {
+        setLists(makeLists(states, tasks));
+    }, [states, tasks]);
 
     return (
-        <Container className={ `${ styles.tasksList } flex-grow-1 mt-4 ${ styles.containerLg }` }>
-            <div className={ `${ styles.tasksListContent } row g-4 h-100` }>
-                <div className="col">
-                    <TasksListColumn tasksType={ TasksStates.CREATED } items={ createdTasks }/>
-                </div>
-                <div className="col">
-                    <TasksListColumn tasksType={ TasksStates.IN_WORK } items={ inWorkTasks }/>
-                </div>
-                <div className="col">
-                    <TasksListColumn tasksType={ TasksStates.READY } items={ readyTasks }/>
-                </div>
-            </div>
-        </Container>
+        <div className={ `${ styles.tasksList } flex-grow-1 py-4` }>
+            <Container className={ `${ styles.tasksListContent } ${ styles.containerLg }` }>
+                {
+                    lists.map((list, i) => (
+                            <div className="col" key={ list.type }>
+                                <TasksListColumn tasksType={ list.type } items={ list.items }/>
+                            </div>
+                        )
+                    )
+                }
+            </Container>
+        </div>
     );
+}
+
+function makeLists(states, tasks) {
+    return states.map((item, i) => {
+        const tasksWithState = tasks.filter((task) => task.state === item.value);
+
+        return {
+            type: item.value,
+            items: tasksWithState,
+        };
+    });
 }

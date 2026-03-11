@@ -14,6 +14,6 @@ export function ThemeSwitchButton() {
     const themeSwitchIconColor = theme === 'dark' ? '#935123' : '#f88638';
 
     return (
-        <LightbulbFill className="icon-button" color={ themeSwitchIconColor } size={ 20 } onClick={ onToggleTheme }/>
+        <LightbulbFill className="cursor-pointer" color={ themeSwitchIconColor } size={ 20 } onClick={ onToggleTheme }/>
     );
 }

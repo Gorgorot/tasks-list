@@ -6,6 +6,9 @@ module.exports = {
     entry: path.resolve(__dirname, './src/main.js'),
     devtool: 'eval-source-map',
     stats: 'minimal',
+    cache: {
+        type: "filesystem",
+    },
     module: {
         rules: [
             {
@@ -16,7 +19,7 @@ module.exports = {
             {
                 test: /\.module\.scss$/,
                 use: [
-                    MiniCssExtractPlugin.loader,
+                    isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
                     {
                         loader: 'css-loader',
                         options: {
@@ -41,8 +44,8 @@ module.exports = {
             {
                 test: /^((?!\.module).)*scss$/,
                 use: [
-                    MiniCssExtractPlugin.loader,
-                    'css-loader', ,
+                    isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
+                    'css-loader',
                     {
                         loader: 'sass-loader',
                         options: {
@@ -67,6 +70,8 @@ module.exports = {
         static: path.resolve(__dirname, './dist'),
         historyApiFallback: true,
         open: true,
+        port: 8082,
+        hot: true
     },
     plugins: [
         new MiniCssExtractPlugin(),

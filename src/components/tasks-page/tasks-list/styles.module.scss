@@ -1,22 +1,35 @@
 @use "bootstrap/scss/functions" as *;
 
 .tasks-list {
-  margin: 0 auto;
+  //margin: 0 auto;
+  max-height: calc(100% - 105px);
+  overflow: auto;
 
   &__content {
+    display: flex;
     gap: 20px;
-  }
+    min-height: 100%;
 
-  &.container-lg {
-    max-width: 1500px;
+    &.container-lg {
+      max-width: 1500px;
+    }
   }
+}
+
+.tasks-list-item__controls {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  right: 16px;
+  bottom: 4px;
+  gap: 8px;
 }
 
 .tasks-list-item__date {
   position: absolute;
   font-size: 0.75rem;
   color: #7b7b7b;
-  right: 6px;
+  left: 16px;
   bottom: 2px;
 }
 
@@ -28,6 +41,9 @@
   &__header {
     background: var(--background-gray);
     border-radius: 5px;
+    position: sticky;
+    top: -24px;
+    z-index: 2;
   }
 
   &__content {

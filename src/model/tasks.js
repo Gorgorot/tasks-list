@@ -7,17 +7,23 @@ export const TasksStates = {
 };
 
 export const TasksNamesMap = {
-    [TasksStates.CREATED]: 'Готово к работе',
+    [TasksStates.CREATED]: 'Запланировано',
     [TasksStates.IN_WORK]: 'В работе',
     [TasksStates.READY]: 'Выполнено'
 };
 
-export function makeTask(name, description) {
+export const TasksColorsMap = {
+    [TasksStates.CREATED]: '#198754',
+    [TasksStates.IN_WORK]: '#ffc107',
+    [TasksStates.READY]: '#212529'
+};
+
+export function makeTask(name, description, state = TasksStates.CREATED) {
     return {
         name,
         description,
+        state,
         id: uuidv4(),
-        state: TasksStates.CREATED,
         createdAt: new Date().toLocaleString('ru-Ru', {
             year: "numeric",
             month: "long",

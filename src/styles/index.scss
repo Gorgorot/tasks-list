@@ -9,6 +9,17 @@
   height: 100vh;
 }
 
-.icon-button {
+textarea {
+  resize: none;
+}
+
+.cursor-pointer {
   cursor: pointer;
+}
+
+.text-multy-ellipsis {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
