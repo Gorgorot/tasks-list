@@ -1,5 +1,17 @@
 @use "bootstrap/scss/functions" as *;
 
+.tasks-list {
+  margin: 0 auto;
+
+  &__content {
+    gap: 20px;
+  }
+
+  &.container-lg {
+    max-width: 1500px;
+  }
+}
+
 .tasks-list-item__date {
   position: absolute;
   font-size: 0.75rem;
@@ -11,6 +23,7 @@
 .tasks-list-column {
   height: 100%;
   border-radius: 5px;
+  background: var(--background-dark-gray);
 
   &__header {
     background: var(--background-gray);

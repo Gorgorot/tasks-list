@@ -9,7 +9,7 @@ export function TasksListItem({ task }) {
                 <Card.Title>{ task.name }</Card.Title>
             </Card.Header>
             <Card.Body className="position-relative">
-                <Card.Text>{ task.description }</Card.Text>
+                <Card.Text className="text-break">{ task.description }</Card.Text>
                 <div className={ `${ styles.tasksListItemDate }` }>
                     { task.createdAt }
                 </div>

@@ -4,6 +4,8 @@ import { useSelector } from "react-redux";
 import { createdTasksSelector, inWorkTasksSelector, readyTasksSelector } from "../../../stores/tasks/tasks-selectors";
 import { TasksListColumn } from "./tasks-list-column";
 import { TasksStates } from "../../../model/tasks";
+import * as styles from './styles.module.scss';
+
 
 export function TasksList() {
     const createdTasks = useSelector(createdTasksSelector);
@@ -11,8 +13,8 @@ export function TasksList() {
     const readyTasks = useSelector(readyTasksSelector);
 
     return (
-        <Container className="flex-grow-1 mt-4" fluid>
-            <div className="row g-4 h-100">
+        <Container className={ `${ styles.tasksList } flex-grow-1 mt-4 ${ styles.containerLg }` }>
+            <div className={ `${ styles.tasksListContent } row g-4 h-100` }>
                 <div className="col">
                     <TasksListColumn tasksType={ TasksStates.CREATED } items={ createdTasks }/>
                 </div>
